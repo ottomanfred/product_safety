@@ -14,13 +14,43 @@ model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   password String
-  tasks    Task[]
+  Incidents Incident[]
 }
 
-model Task {
-  id          Int     @id @default(autoincrement())
-  description String
-  done        Boolean @default(false)
-  userId      Int
-  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+model Incident {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  reportNumber String
+  reportDate String
+  submitterType String
+  productDescription String
+  productCategory String
+  productSubCategory String
+  productType String
+  productCode Int
+  manufacturer String
+  brand String
+  model String
+  serialNumber String
+  upc Int
+  retailer String
+  purchaseDate String
+  incidentDescription String
+  state String
+  zipcode Int
+  severity String
+  victimGender String
+  victimAge Int
+  companyComment String
 }
+
+
+model Recall {
+  id Int @id @default(autoincrement())
+  title Int
+  date String
+  summary String
+  recallNumber Int
+}
+
