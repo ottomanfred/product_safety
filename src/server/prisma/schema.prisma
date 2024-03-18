@@ -19,8 +19,8 @@ model User {
 
 model Incident {
   id Int @id @default(autoincrement())
-  user User @relation(fields: [userId], references: [id])
-  userId Int
+  user User? @relation(fields: [userId], references: [id])
+  userId Int?
   reportNumber String
   reportDate String
   submitterType String
@@ -33,22 +33,22 @@ model Incident {
   brand String
   model String
   serialNumber String
-  upc Int
+  upc BigInt?
   retailer String
   purchaseDate String
   incidentDescription String
   state String
-  zipcode Int
+  zipcode Int?
   severity String
   victimGender String
-  victimAge Int
+  victimAge Int?
   companyComment String
 }
 
 
 model Recall {
   id Int @id @default(autoincrement())
-  title Int
+  title String
   date String
   summary String
   recallNumber Int
