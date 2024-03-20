@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import AuthForm from "./features/auth/AuthForm";
-import Tasks from "./features/reports/Home.jsx";
 import Root from "./layout/Root.jsx";
+import Home from "./features/reports/Home.jsx"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
