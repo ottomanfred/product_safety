@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCreateTaskMutation } from "./taskSlice";
+import { useCreateTaskMutation } from "./recallSlice";
 
 /** Form for creating new tasks */
 export default function NewTask() {

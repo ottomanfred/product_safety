@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice";
-import NewTask from "./NewTask";
-import Task from "./Task";
-import { useGetTasksQuery } from "./taskSlice";
+import NewTask from "./Recall";
+import Task from "./Incident";
+import { useGetTasksQuery } from "./recallSlice";
 
-import "./Tasks.less";
+import "./Home.less";
 
 /** Main interface for user to interact with their tasks */
 export default function Tasks() {
