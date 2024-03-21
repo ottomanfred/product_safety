@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useGetRecallsQuery } from "./recallSlice";
 import { useGetIncidentsQuery } from "./incidentSlice";
 import SearchForm from "./SearchForm";
-
+import Barcode from "../barcode/Barcode";
 import "./Home.less";
 
 export default function Home() {
@@ -11,13 +11,6 @@ export default function Home() {
   const { data: incidents, isLoading: incidentsLoading } =
     useGetIncidentsQuery();
   const [reportsSearch, setReportsSearch] = useState("");
-
-  // const navigate = useNavigate();
-
-  // const reserve = (id) => {
-  //   reserveBook(id);
-  //   navigate("/account");
-  // };
 
   const searchMatch = new RegExp(reportsSearch, "i");
 
@@ -28,6 +21,7 @@ export default function Home() {
           <li>Loading...</li>
         ) : (
           <>
+            <Barcode />
             <SearchForm
               reportsSearch={reportsSearch}
               setReportsSearch={setReportsSearch}
