@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { useGetRecallsQuery } from "./recallSlice";
 import { useGetIncidentsQuery } from "./incidentSlice";
 import SearchForm from "./SearchForm";
 import Barcode from "../barcode/Barcode";
-import "./Home.less";
 
 export default function Home() {
   const { data: recalls, isLoading: recallsLoading } = useGetRecallsQuery();
@@ -12,12 +11,14 @@ export default function Home() {
     useGetIncidentsQuery();
   const [reportsSearch, setReportsSearch] = useState("");
   const [result, setResult] = useState("");
+  const {showBarcode, setShowBarcode} = useOutletContext();
 
   const searchMatch = new RegExp(reportsSearch, "i");
 
   if (result !== "") {
     setReportsSearch(result);
-    setResult("")
+    setResult("");
+    setShowBarcode(false);
   }
 
   return (
@@ -27,7 +28,7 @@ export default function Home() {
           <li>Loading...</li>
         ) : (
           <>
-            <Barcode result={result} setResult={setResult} />
+            {showBarcode && <Barcode result={result} setResult={setResult} />}
             <SearchForm
               reportsSearch={reportsSearch}
               setReportsSearch={setReportsSearch}

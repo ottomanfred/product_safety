@@ -8,13 +8,13 @@ function Barcode({ result, setResult }) {
   });
 
   return (
-    <>
+    <div>
       <video ref={ref} />
       <p>
         <span>Last result:</span>
         <span>{result}</span>
       </p>
-    </>
+    </div>
   );
 }
 
