@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { useZxing } from "react-zxing";
 
-function Barcode() {
-  const [result, setResult] = useState("");
+function Barcode({ result, setResult }) {
   const { ref } = useZxing({
     onDecodeResult(result) {
       setResult(result.getText());

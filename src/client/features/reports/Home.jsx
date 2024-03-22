@@ -11,8 +11,14 @@ export default function Home() {
   const { data: incidents, isLoading: incidentsLoading } =
     useGetIncidentsQuery();
   const [reportsSearch, setReportsSearch] = useState("");
+  const [result, setResult] = useState("");
 
   const searchMatch = new RegExp(reportsSearch, "i");
+
+  if (result !== "") {
+    setReportsSearch(result);
+    setResult("")
+  }
 
   return (
     <div className="home_container">
@@ -21,7 +27,7 @@ export default function Home() {
           <li>Loading...</li>
         ) : (
           <>
-            <Barcode />
+            <Barcode result={result} setResult={setResult} />
             <SearchForm
               reportsSearch={reportsSearch}
               setReportsSearch={setReportsSearch}

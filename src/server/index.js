@@ -4,8 +4,8 @@ const express = require("express");
 const morgan = require("morgan");
 const { createServer: createViteServer } = require("vite");
 
-https = require("https");
-var fs = require("fs");
+const https = require("https");
+const fs = require("fs");
 const options = {
   key: fs.readFileSync("./cert/localhost.key"),
   cert: fs.readFileSync("./cert/localhost.crt"),
@@ -53,7 +53,6 @@ const createApp = async () => {
     res.status(err.status ?? 500).send(err.message ?? "Internal server error.");
   });
 
- 
   const server = https.createServer(options, app);
 
   server.listen(PORT, () => {
