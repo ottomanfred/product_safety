@@ -7,7 +7,9 @@ export default function BottomNavbar({ showBarcode, setShowBarcode }) {
 
   const returnHome = () => {
     navigate("/");
+    window.location.reload();
   };
+  
   const returnLogin = () => {
     navigate("/login");
   };
