@@ -11,7 +11,7 @@ export default function Home() {
     useGetIncidentsQuery();
   const [reportsSearch, setReportsSearch] = useState("");
   const [result, setResult] = useState("");
-  const {showBarcode, setShowBarcode} = useOutletContext();
+  const { showBarcode, setShowBarcode } = useOutletContext();
 
   const searchMatch = new RegExp(reportsSearch, "i");
 
@@ -29,10 +29,12 @@ export default function Home() {
         ) : (
           <>
             {showBarcode && <Barcode result={result} setResult={setResult} />}
-            <SearchForm
-              reportsSearch={reportsSearch}
-              setReportsSearch={setReportsSearch}
-            />
+            {!showBarcode && (
+              <>
+              <SearchForm
+                reportsSearch={reportsSearch}
+                setReportsSearch={setReportsSearch}
+              />
             <h3>Recalls:</h3>
             {recalls
               .filter((recall) => recall.title.match(searchMatch))
@@ -55,7 +57,7 @@ export default function Home() {
                   <p>{incident.reportDate}</p>
                   <Link to={`/incidents/${incident.id}`}>Incident Details</Link>
                 </li>
-              ))}
+              ))}</>)}
           </>
         )}
       </ul>
