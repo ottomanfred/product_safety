@@ -7,16 +7,17 @@ import store from "./store";
 import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root.jsx";
 import Home from "./features/reports/Home.jsx";
-import "./index.css"
+import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Barcode from "./features/barcode/Barcode.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
       { path: "/", element: <Home /> },
-      // { path: "/tasks", element: <Tasks /> },
+      { path: "/barcode", element: <Barcode /> },
       { path: "/login", element: <AuthForm /> },
     ],
   },

@@ -1,9 +1,14 @@
 import { useZxing } from "react-zxing";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-function Barcode({ result, setResult }) {
+function Barcode() {
+  const [result, setResult] = useOutletContext();
+  const navigate = useNavigate();
+
   const { ref } = useZxing({
     onDecodeResult(result) {
       setResult(result.getText());
+      navigate("/");
     },
   });
 
