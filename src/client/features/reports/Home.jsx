@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { useGetRecallsQuery } from "./recallSlice";
 import { useGetIncidentsQuery } from "./incidentSlice";
 import SearchForm from "./SearchForm";
-import Barcode from "../barcode/Barcode";
 
 export default function Home() {
   const { data: recalls, isLoading: recallsLoading } = useGetRecallsQuery();
   const { data: incidents, isLoading: incidentsLoading } =
     useGetIncidentsQuery();
+
   const [reportsSearch, setReportsSearch] = useState("");
-  const [result, setResult] = useState("");
-  const { showBarcode, setShowBarcode } = useOutletContext();
+  const [result, setResult] = useOutletContext();
+
   const navigate = useNavigate();
 
   const searchMatch = new RegExp(reportsSearch, "i");
@@ -25,19 +25,15 @@ export default function Home() {
     );
   }
 
-  if (result !== "") {
+  useEffect(() => {
     setReportsSearch(result);
-    setResult("");
-    setShowBarcode(false);
-  }
+  }, [result]);
 
   return (
     <div className="home_container">
       <ul className="reports">
         {recallsLoading || incidentsLoading ? (
           <li>Loading...</li>
-        ) : showBarcode ? (
-          <Barcode result={result} setResult={setResult} />
         ) : (
           <>
             <SearchForm
@@ -63,7 +59,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <p>{recall.summary.split(" ", 8).join(" ")} ...</p>
+                    <p>{recall.summary.split(" ", 8).join(" ")}...</p>
                     <div className="card-actions justify-end">
                       <Link
                         to={`/recalls/${recall.id}`}
@@ -76,7 +72,7 @@ export default function Home() {
                 </div>
               ))}
 
-            <h3>Incidents:</h3>
+            <h3 class="text-3xl font-bold dark:text-white m-2.5">Incidents:</h3>
             {incidents
               .filter((incident) => incident.brand.match(searchMatch))
               .map((incident) => (
@@ -96,7 +92,7 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <p>{incident.productDescription.slice(0, 45)} ...</p>
+                    <p>{incident.productDescription.slice(0, 45)}...</p>
                     <div className="card-actions justify-end">
                       <button
                         className="btn btn-primary"

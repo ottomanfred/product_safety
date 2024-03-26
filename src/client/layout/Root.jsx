@@ -5,15 +5,15 @@ import "../index.css";
 import { useState } from "react";
 
 export default function Root() {
-  const [showBarcode, setShowBarcode] = useState(false);
+  const [result, setResult] = useState("");
 
   return (
     <>
       {/* <Navbar /> */}
       <main>
-        <Outlet context={{ showBarcode, setShowBarcode }} />
+        <Outlet context={[result, setResult]}/>
       </main>
-      <BottomNavbar showBarcode={showBarcode} setShowBarcode={setShowBarcode} />
+      <BottomNavbar setResult={setResult}/>
     </>
   );
 }

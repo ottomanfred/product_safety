@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom";
 /**
  * A simple bottom navigation bar
  */
-export default function BottomNavbar({ showBarcode, setShowBarcode }) {
+export default function BottomNavbar({setResult}) {
   const navigate = useNavigate();
 
   const returnHome = () => {
+    setResult("");
     navigate("/");
-    window.location.reload();
+  };
+
+  const returnBarcode = () => {
+    navigate("/barcode");
   };
 
   const returnLogin = () => {
@@ -44,7 +48,7 @@ export default function BottomNavbar({ showBarcode, setShowBarcode }) {
         </div>
         <div class="flex items-center justify-center">
           <button
-            onClick={() => setShowBarcode(() => !showBarcode)}
+            onClick={returnBarcode}
             data-tooltip-target="tooltip-new"
             type="button"
             class="inline-flex items-center justify-center w-10 h-10 font-medium bg-blue-600 rounded-full hover:bg-blue-700 group focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800"
