@@ -7,6 +7,9 @@ import store from "./store";
 import AuthForm from "./features/auth/AuthForm";
 import Root from "./layout/Root.jsx";
 import Home from "./features/reports/Home.jsx";
+import Profile from "./features/profile/Profile.jsx";
+import IncidentForm from "./features/profile/IncidentForm.jsx";
+
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -19,6 +22,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/barcode", element: <Barcode /> },
       { path: "/login", element: <AuthForm /> },
+      { path: "/profile", element: <Profile /> },
+      { path: "/incidents/submit", element: <IncidentForm /> },
     ],
   },
 ]);
