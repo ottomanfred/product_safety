@@ -1,10 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGetUserQuery, useGetUserIncidentsQuery } from "./userSlice";
+import { logout } from "../auth/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const { data: incidents, isLoading: incidentsLoading } =
     useGetUserIncidentsQuery();
+  const { data: user, isLoading: userLoading } = useGetUserQuery();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <>
@@ -13,7 +22,18 @@ export default function Profile() {
       ) : (
         <>
           <div>Profile</div>
-          <Link to="/incidents/submit">Submit Incident Report</Link>
+          {userLoading ? (
+            <p>Loading user info...</p>
+          ) : (
+            <>
+              <p>Username: {user.username}</p>
+              <p>Incidents filed: {incidents.length}</p>
+            </>
+          )}
+          <button onClick={handleLogout}>Log Out</button>
+          <Link className="link" to="/incidents/submit">
+            Submit Incident Report
+          </Link>
           <h3>Your Reports:</h3>
           {incidents.map((incident) => (
             <div

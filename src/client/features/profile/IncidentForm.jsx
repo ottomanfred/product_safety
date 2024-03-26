@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useAddIncidentMutation } from "../reports/incidentSlice";
 
 export default function IncidentForm() {
-
   const [brand, setBrand] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [incidentDescription, setIncidentDescription] = useState("");
@@ -15,7 +14,7 @@ export default function IncidentForm() {
   };
 
   return (
-    <form className="flex flex-col" onSubmit={create}>
+    <form class="form" onSubmit={create}>
       <label>Brand:</label>
       <input
         type="text"
@@ -43,29 +42,3 @@ export default function IncidentForm() {
     </form>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
