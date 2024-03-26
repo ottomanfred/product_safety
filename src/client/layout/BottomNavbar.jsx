@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-/**
- * A simple bottom navigation bar
- */
-export default function BottomNavbar({setResult}) {
+import { useSelector } from "react-redux";
+import { selectToken } from "../features/auth/authSlice";
+
+export default function BottomNavbar({ setResult }) {
   const navigate = useNavigate();
+  const token = useSelector(selectToken);
 
   const returnHome = () => {
     setResult("");
@@ -15,7 +16,7 @@ export default function BottomNavbar({setResult}) {
   };
 
   const returnLogin = () => {
-    navigate("/login");
+    token ? navigate("/profile") : navigate("/login");
   };
 
   return (

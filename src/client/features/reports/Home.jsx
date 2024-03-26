@@ -10,7 +10,7 @@ export default function Home() {
     useGetIncidentsQuery();
 
   const [reportsSearch, setReportsSearch] = useState("");
-  const [result, setResult] = useOutletContext();
+  const [result] = useOutletContext();
 
   const navigate = useNavigate();
 
@@ -84,9 +84,6 @@ export default function Home() {
                     <h2 className="card-title">{incident.brand}</h2>
 
                     <div className="flex">
-                      <div class="border-2 border-rose-600 text-red-600 rounded-md w-20 text-center">
-                        Recall
-                      </div>
                       <div class="border-2 border-yellow-400 text-yellow-400 rounded-md w-20 text-center">
                         Incident
                       </div>
@@ -94,14 +91,13 @@ export default function Home() {
 
                     <p>{incident.productDescription.slice(0, 45)}...</p>
                     <div className="card-actions justify-end">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => {
-                          navigate(`/incidents/${incident.id}`);
-                        }}
+                    <Link
+                        to={`/incidents/${incident.id}`}
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         Incident Details
-                      </button>
+                      </Link>
+
                     </div>
                   </div>
                 </div>
