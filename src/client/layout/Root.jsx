@@ -9,7 +9,7 @@ export default function Root() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>
         <Outlet context={{ showBarcode, setShowBarcode }} />
       </main>
