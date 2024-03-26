@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { useGetRecallsQuery } from "./recallSlice";
 import { useGetIncidentsQuery } from "./incidentSlice";
 import SearchForm from "./SearchForm";
@@ -12,8 +12,18 @@ export default function Home() {
   const [reportsSearch, setReportsSearch] = useState("");
   const [result, setResult] = useState("");
   const { showBarcode, setShowBarcode } = useOutletContext();
+  const navigate = useNavigate();
 
   const searchMatch = new RegExp(reportsSearch, "i");
+
+  function infoIcon() {
+    return (
+      <svg viewBox="0 0 1024 1024" fill="currentColor" height="1em" width="1em">
+        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" />
+        <path d="M464 336a48 48 0 1096 0 48 48 0 10-96 0zm72 112h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V456c0-4.4-3.6-8-8-8z" />
+      </svg>
+    );
+  }
 
   if (result !== "") {
     setReportsSearch(result);
@@ -26,38 +36,80 @@ export default function Home() {
       <ul className="reports">
         {recallsLoading || incidentsLoading ? (
           <li>Loading...</li>
+        ) : showBarcode ? (
+          <Barcode result={result} setResult={setResult} />
         ) : (
           <>
-            {showBarcode && <Barcode result={result} setResult={setResult} />}
-            {!showBarcode && (
-              <>
-              <SearchForm
-                reportsSearch={reportsSearch}
-                setReportsSearch={setReportsSearch}
-              />
-            <h3>Recalls:</h3>
+            <SearchForm
+              reportsSearch={reportsSearch}
+              setReportsSearch={setReportsSearch}
+            />
+            <h3 class="text-3xl font-bold dark:text-white m-2.5">Recalls:</h3>
             {recalls
               .filter((recall) => recall.title.match(searchMatch))
               .map((recall) => (
-                <li className="recall_card" key={recall.id}>
-                  <h2>{recall.title}</h2>
-                  <p>{recall.date}</p>
-                  <p>{recall.summary}</p>
-                  <Link to={`/recalls/${recall.id}`}>Recall Details</Link>
-                </li>
+                <div
+                  className="card w-90vw bg-base-100 shadow-lg m-2.5"
+                  key={recall.id}
+                >
+                  <div className="card-body">
+                    <h2 className="card-title">{recall.title}</h2>
+                    <div className="flex">
+                      <div class="border-2 border-rose-600 text-red-600 rounded-md w-20 text-center">
+                        Recall
+                      </div>
+                      <div className="tooltip" data-tip="hello">
+                        <button class="m-1">{infoIcon()}</button>
+                      </div>
+                    </div>
+
+                    <p>{recall.summary.split(" ", 8).join(" ")} ...</p>
+                    <div className="card-actions justify-end">
+                      <Link
+                        to={`/recalls/${recall.id}`}
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        Recall Details
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               ))}
 
             <h3>Incidents:</h3>
             {incidents
               .filter((incident) => incident.brand.match(searchMatch))
               .map((incident) => (
-                <li className="incident_card" key={incident.id}>
-                  <h2>{incident.brand}</h2>
-                  <p>{incident.productDescription}</p>
-                  <p>{incident.reportDate}</p>
-                  <Link to={`/incidents/${incident.id}`}>Incident Details</Link>
-                </li>
-              ))}</>)}
+                <div
+                  className="card w-90vw bg-base-100 shadow-lg m-2.5"
+                  key={incident.id}
+                >
+                  <div className="card-body">
+                    <h2 className="card-title">{incident.brand}</h2>
+
+                    <div className="flex">
+                      <div class="border-2 border-rose-600 text-red-600 rounded-md w-20 text-center">
+                        Recall
+                      </div>
+                      <div class="border-2 border-yellow-400 text-yellow-400 rounded-md w-20 text-center">
+                        Incident
+                      </div>
+                    </div>
+
+                    <p>{incident.productDescription.slice(0, 45)} ...</p>
+                    <div className="card-actions justify-end">
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                          navigate(`/incidents/${incident.id}`);
+                        }}
+                      >
+                        Incident Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </>
         )}
       </ul>
