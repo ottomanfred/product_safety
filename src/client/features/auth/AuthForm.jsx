@@ -44,7 +44,7 @@ export default function AuthForm() {
   return (
     <>
       <h1>{authAction}</h1>
-      <form onSubmit={attemptAuth}>
+      <form class="form" onSubmit={attemptAuth}>
         <label>
           Username
           <input
