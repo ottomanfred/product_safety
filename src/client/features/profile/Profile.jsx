@@ -1,11 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGetUserQuery, useGetUserIncidentsQuery } from "./userSlice";
 
 export default function Profile() {
   const { data: incidents, isLoading: incidentsLoading } =
     useGetUserIncidentsQuery();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -32,10 +31,7 @@ export default function Profile() {
 
                 <p>{incident.productDescription.slice(0, 45)}...</p>
                 <div className="card-actions justify-end">
-                  <Link
-                    to={`/incidents/${incident.id}`}
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
+                  <Link to={`/incidents/${incident.id}`} class="link">
                     Incident Details
                   </Link>
                 </div>

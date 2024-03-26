@@ -61,10 +61,7 @@ export default function Home() {
 
                     <p>{recall.summary.split(" ", 8).join(" ")}...</p>
                     <div className="card-actions justify-end">
-                      <Link
-                        to={`/recalls/${recall.id}`}
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
+                      <Link to={`/recalls/${recall.id}`} class="link">
                         Recall Details
                       </Link>
                     </div>
@@ -91,13 +88,9 @@ export default function Home() {
 
                     <p>{incident.productDescription.slice(0, 45)}...</p>
                     <div className="card-actions justify-end">
-                    <Link
-                        to={`/incidents/${incident.id}`}
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                      >
+                      <Link to={`/incidents/${incident.id}`} class="link">
                         Incident Details
                       </Link>
-
                     </div>
                   </div>
                 </div>

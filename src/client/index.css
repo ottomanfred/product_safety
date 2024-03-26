@@ -1,19 +1,14 @@
 @tailwind base;
 @tailwind components;
 
+@layer components {
+  .bottom-nav-background {
+    @apply fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600;
+  }
 
-
-
-/* @layer components {
-
-    .bottom-nav-background {
-        @apply fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600;
-    }
-
-
-
-
-} */
-
+  .link {
+    @apply font-medium text-blue-600 dark:text-blue-500 no-underline hover:underline;
+  }
+}
 
 @tailwind utilities;
