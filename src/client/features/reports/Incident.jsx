@@ -26,11 +26,9 @@ export default function Incident() {
             Go Back
           </Link>
 
-          <div
-            className="card w-90vw bg-base-100 shadow-lg m-2.5"
-            key={incident.id}
-          >
-            <div className="card-body">
+      
+            <div key={incident.id} className="card-body-details">
+            
               <h2 className="text-3xl font-bold dark:text-white m-2.5 text-center">
                 Incident Report Details
               </h2>
@@ -81,7 +79,7 @@ export default function Incident() {
 
               {/* <div className="card-actions justify-end"></div> */}
             </div>
-          </div>
+          
         </>
       )}
     </>
