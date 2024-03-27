@@ -24,7 +24,7 @@
   }
 
   .card-body-details {
-    @apply border border-gray-200 rounded-2xl mx-2.5 p-4 shadow-md;
+    @apply border border-gray-200 rounded-2xl mx-2.5 pt-0 p-4 shadow-md;
   }
 
   .user-profile-upper {
