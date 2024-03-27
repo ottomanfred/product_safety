@@ -16,7 +16,7 @@
 
 
   .incident-section {
-    @apply border-solid border-2 border-blue-600 rounded-2xl p-3 my-2;
+    @apply border-solid border-2 border-blue-600 rounded-2xl p-3 mb-2 ;
   }
 
   .incident-section-title {

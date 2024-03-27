@@ -9,7 +9,7 @@ export default function Recall() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <main class="mb-20">
       {recallLoading ? (
         <p>Loading...</p>
       ) : (
@@ -27,10 +27,10 @@ export default function Recall() {
 
           <div key={recall.id} className="card-body-details">
             <div className="relative flex flex-row justify-center items-center">
-              <div class="absolute right-0 m-4 border-2 border-rose-600 text-red-600 rounded-md w-20 text-center">
+              <div class="absolute top-4 sm:top-0 right-0 sm:mt-4 border-2 border-rose-600 text-xs sm:text-base text-red-600 rounded-md w-12 sm:w-20 text-center">
                 Recall
               </div>
-              <h2 className="text-3xl font-bold dark:text-white m-4 text-center">
+              <h2 className="text-3xl font-bold dark:text-white m-4 mb-2 text-center">
                 Recall Details
               </h2>
             </div>
@@ -48,6 +48,6 @@ export default function Recall() {
           </div>
         </>
       )}
-    </>
+    </main>
   );
 }
