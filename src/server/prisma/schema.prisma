@@ -21,6 +21,7 @@ model Incident {
   id                  Int     @id @default(autoincrement())
   user                User?   @relation(fields: [userId], references: [id])
   userId              Int?
+
   reportNumber        String?
   reportDate          String?
   submitterType       String?
@@ -42,6 +43,7 @@ model Incident {
   severity            String?
   victimGender        String?
   victimAge           Int?
+  
   companyComment      String?
 }
 

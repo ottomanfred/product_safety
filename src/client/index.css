@@ -7,11 +7,24 @@
   }
 
   .link {
-    @apply font-medium text-blue-600 dark:text-blue-500 no-underline hover:underline;
+    @apply font-medium text-blue-600 dark:text-blue-500 no-underline hover:underline mx-2.5;
   }
 
   .form input {
     @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+
+
+  .incident-section {
+    @apply border-solid border-2 border-blue-600 rounded-lg p-3 my-2;
+  }
+
+  .incident-section-title {
+    @apply font-medium text-lg text-blue-600 mb-2 pb-1 border-b-2 border-gray-400;
+  }
+
+  .card-body-details {
+    @apply border border-gray-200 rounded-lg mx-2.5 p-4 shadow-md;
   }
 
   .user-profile-upper {
@@ -33,6 +46,7 @@
   .user-details {
     @apply border border-gray-200 rounded-lg p-4 my-2 shadow-md;
   }
+
 }
 
 @tailwind utilities;
