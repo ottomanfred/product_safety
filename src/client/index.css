@@ -15,9 +15,16 @@
   }
 
   .incident-section {
-    @apply border-solid border-2 border-blue-600 rounded-lg;
+    @apply border-solid border-2 border-blue-600 rounded-lg p-3;
   }
 
+  .incident-section-title {
+    @apply font-medium text-lg text-blue-600 border-b-2 border-gray-400;
+  }
+
+  .incident-section-title > p {
+    @apply pt-6;
+  }
 }
 
 @tailwind utilities;
