@@ -14,7 +14,6 @@
     @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
   }
 
-
   .incident-section {
     @apply border-solid border-2 border-blue-600 rounded-lg p-3 my-2;
   }
@@ -28,25 +27,24 @@
   }
 
   .user-profile-upper {
-    @apply flex flex-col m-2.5;
+    @apply flex flex-col;
   }
 
   .user-profile-upper h2 {
-    @apply text-4xl font-bold dark:text-white;
+    @apply text-4xl font-bold dark:text-white mx-2.5;
   }
 
   .user-profile-upper p {
-    @apply font-semibold pb-1;
+    @apply pb-1 mx-2.5;
   }
 
   .user-profile-upper h3 {
-    @apply text-3xl font-bold dark:text-white;
+    @apply text-3xl font-bold dark:text-white mx-2.5;
   }
 
   .user-details {
-    @apply border border-gray-200 rounded-lg p-4 my-2 shadow-md;
+    @apply border border-gray-200 rounded-lg p-4 my-2 shadow-md mx-2.5;
   }
-
 }
 
 @tailwind utilities;

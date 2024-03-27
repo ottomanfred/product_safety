@@ -27,7 +27,7 @@ export default function Profile() {
             <nav class="flex justify-between">
               <h2>Profile</h2>
               <button
-                className="btn btn-secondary bg-red-700 hover:bg-red-500"
+                className="btn btn-secondary bg-red-700 hover:bg-red-500 border-red-700 mx-2.5 mt-1"
                 onClick={handleLogout}
               >
                 Log Out
@@ -37,8 +37,8 @@ export default function Profile() {
               <p>Loading user info...</p>
             ) : (
               <span className="user-details">
-                <p>Username: {user.username}</p>
-                <p>Incidents reported: {incidents.length}</p>
+                <p><strong>Username:</strong> {user.username}</p>
+                <p><strong>Incidents reported:</strong> {incidents.length}</p>
                 <Link className="link" to="/incidents/submit">
               Submit Incident Report
             </Link>
