@@ -9,6 +9,7 @@ import Root from "./layout/Root.jsx";
 import Home from "./features/reports/Home.jsx";
 import Profile from "./features/profile/Profile.jsx";
 import IncidentForm from "./features/profile/IncidentForm.jsx";
+import Recall from "./features/reports/Recall.jsx";
 import Incident from "./features/reports/Incident.jsx";
 
 import "./index.css";
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/profile", element: <Profile /> },
       { path: "/incidents/submit", element: <IncidentForm /> },
       { path: "/incidents/:id", element: <Incident /> },
+      { path: "/recalls/:id", element: <Recall /> },
     ],
   },
 ]);
