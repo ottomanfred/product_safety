@@ -24,6 +24,11 @@ export default function Home() {
       </svg>
     );
   }
+  const RECALL =
+    "Recall means a firm's removal or correction of a marketed product that the FDA considers to be in violation of the laws it administers and against which the agency would initiate legal action, e.g., seizure. Recall does not include a market withdrawal or a stock recovery.";
+
+  const INCIDENT =
+    "A Customer Incident Report is a detailed document used to record and address any incidents involving customers in a business setting. These incidents may include accidents, injuries, disputes, complaints, or any other unexpected events that impact the customer experience.";
 
   useEffect(() => {
     setReportsSearch(result);
@@ -54,7 +59,7 @@ export default function Home() {
                       <div class="border-2 border-rose-600 text-red-600 rounded-md w-20 text-center">
                         Recall
                       </div>
-                      <div className="tooltip" data-tip="hello">
+                      <div className="tooltip" data-tip={RECALL}>
                         <button class="m-1">{infoIcon()}</button>
                       </div>
                     </div>
@@ -83,6 +88,9 @@ export default function Home() {
                     <div className="flex">
                       <div class="border-2 border-yellow-400 text-yellow-400 rounded-md w-20 text-center">
                         Incident
+                      </div>
+                      <div className="tooltip" data-tip={INCIDENT}>
+                        <button class="m-1">{infoIcon()}</button>
                       </div>
                     </div>
 

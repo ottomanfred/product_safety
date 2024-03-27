@@ -8,8 +8,10 @@ export default function Profile() {
   const { data: incidents, isLoading: incidentsLoading } =
     useGetUserIncidentsQuery();
   const { data: user, isLoading: userLoading } = useGetUserQuery();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/");
@@ -21,20 +23,20 @@ export default function Profile() {
         <p>Loading...</p>
       ) : (
         <>
-          <div>Profile</div>
+          <h2>Profile</h2>
           {userLoading ? (
             <p>Loading user info...</p>
           ) : (
             <>
               <p>Username: {user.username}</p>
-              <p>Incidents filed: {incidents.length}</p>
+              <p>Incidents reported: {incidents.length}</p>
             </>
           )}
           <button onClick={handleLogout}>Log Out</button>
           <Link className="link" to="/incidents/submit">
             Submit Incident Report
           </Link>
-          <h3>Your Reports:</h3>
+          <h3>Your Incidents:</h3>
           {incidents.map((incident) => (
             <div
               className="card w-90vw bg-base-100 shadow-lg m-2.5"
