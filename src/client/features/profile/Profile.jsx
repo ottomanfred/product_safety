@@ -23,20 +23,29 @@ export default function Profile() {
         <p>Loading...</p>
       ) : (
         <>
-          <h2>Profile</h2>
-          {userLoading ? (
-            <p>Loading user info...</p>
-          ) : (
-            <>
-              <p>Username: {user.username}</p>
-              <p>Incidents reported: {incidents.length}</p>
-            </>
-          )}
-          <button onClick={handleLogout}>Log Out</button>
-          <Link className="link" to="/incidents/submit">
-            Submit Incident Report
-          </Link>
-          <h3>Your Incidents:</h3>
+          <div className="user-profile-upper">
+            <nav class="flex justify-between">
+              <h2>Profile</h2>
+              <button
+                className="btn btn-secondary bg-red-700 hover:bg-red-500"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+            </nav>
+            {userLoading ? (
+              <p>Loading user info...</p>
+            ) : (
+              <span className="user-details">
+                <p>Username: {user.username}</p>
+                <p>Incidents reported: {incidents.length}</p>
+                <Link className="link" to="/incidents/submit">
+              Submit Incident Report
+            </Link>
+              </span>
+            )}
+            <h3>Your Incidents:</h3>
+          </div>
           {incidents.map((incident) => (
             <div
               className="card w-90vw bg-base-100 shadow-lg m-2.5"
