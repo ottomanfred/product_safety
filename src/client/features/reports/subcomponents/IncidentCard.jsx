@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function IncidentCard_home({ incident }) {
+export default function IncidentCard({ incident }) {
   const INCIDENT =
     "A Customer Incident Report is a detailed document used to record and address any incidents involving customers in a business setting. These incidents may include accidents, injuries, disputes, complaints, or any other unexpected events that impact the customer experience.";
 

@@ -3,8 +3,8 @@ import { useOutletContext } from "react-router-dom";
 import { useGetRecallsQuery } from "./recallSlice";
 import { useGetIncidentsQuery } from "./incidentSlice";
 import SearchForm from "./SearchForm";
-import IncidentCard_home from "./subcomponents/IncidentCard_home";
-import RecallCard_home from "./subcomponents/RecallCard_home";
+import IncidentCard from "./subcomponents/IncidentCard";
+import RecallCard from "./subcomponents/RecallCard";
 
 export default function Home() {
   const { data: recalls, isLoading: recallsLoading } = useGetRecallsQuery();
@@ -35,7 +35,7 @@ export default function Home() {
             {recalls
               .filter((recall) => recall.title.match(searchMatch))
               .map((recall) => (
-                <RecallCard_home recall={recall} />
+                <RecallCard recall={recall} />
               ))}
 
             <h3 class="text-3xl font-bold dark:text-white m-2.5">Incidents:</h3>
@@ -46,7 +46,7 @@ export default function Home() {
                   incident.upc?.match(searchMatch)
               )
               .map((incident) => (
-                <IncidentCard_home incident={incident} />
+                <IncidentCard incident={incident} />
               ))}
           </>
         )}

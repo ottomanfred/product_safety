@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function RecallCard_home({ recall }) {
+export default function RecallCard({ recall }) {
   function infoIcon() {
     return (
       <svg viewBox="0 0 1024 1024" fill="currentColor" height="1em" width="1em">
