@@ -74,7 +74,12 @@ export default function AuthForm() {
                   {authAction}
                 </button>
               </form>
-              <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
+              <a
+                className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                onClick={() => setIsLogin(!isLogin)}
+              >
+                {altCopy}
+              </a>
 
               {(loginLoading || registerLoading) && <p>Please wait...</p>}
               {loginError && <p role="alert">{loginError}</p>}

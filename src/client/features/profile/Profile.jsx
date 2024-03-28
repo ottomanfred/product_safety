@@ -37,16 +37,20 @@ export default function Profile() {
               <p>Loading user info...</p>
             ) : (
               <span className="user-details">
-                <p><strong>Username:</strong> {user.username}</p>
-                <p><strong>Incidents reported:</strong> {incidents.length}</p>
+                <p>
+                  <strong>Username:</strong> {user.username}
+                </p>
+                <p>
+                  <strong>Incidents reported:</strong> {incidents.length}
+                </p>
                 <Link className="link" to="/incidents/submit">
-              Submit Incident Report
-            </Link>
+                  Submit Incident Report
+                </Link>
               </span>
             )}
             <h3>Your Incidents:</h3>
           </div>
-          {incidents.map((incident) => (
+          {incidents.toReversed().map((incident) => (
             <div
               className="card w-90vw bg-base-100 shadow-lg m-2.5"
               key={incident.id}

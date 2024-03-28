@@ -16,7 +16,7 @@ const incidentsApi = api.injectEndpoints({
         method: "POST",
         body: incident,
       }),
-      invalidatesTags: ["Incidents"],
+      invalidatesTags: ["Incidents", "User"],
     }),
   }),
 });

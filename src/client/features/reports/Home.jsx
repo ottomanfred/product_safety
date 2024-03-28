@@ -34,6 +34,8 @@ export default function Home() {
     setReportsSearch(result);
   }, [result]);
 
+  console.log("Incedents: ", incidents);
+
   return (
     <div className="home_container">
       <ul className="reports">
@@ -76,7 +78,11 @@ export default function Home() {
 
             <h3 class="text-3xl font-bold dark:text-white m-2.5">Incidents:</h3>
             {incidents
-              .filter((incident) => incident.brand.match(searchMatch))
+              .filter(
+                (incident) =>
+                  incident.brand.match(searchMatch) ||
+                  incident.upc?.match(searchMatch)
+              )
               .map((incident) => (
                 <div
                   className="card w-90vw bg-base-100 shadow-lg m-2.5"
