@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGetUserQuery, useGetUserIncidentsQuery } from "./userSlice";
 import { logout } from "../auth/authSlice";
 import { useDispatch } from "react-redux";
+import IncidentCard from "../reports/subcomponents/IncidentCard";
 
 export default function Profile() {
   const { data: incidents, isLoading: incidentsLoading } =
@@ -51,27 +52,7 @@ export default function Profile() {
             <p class="text-xl font-semibold">Your Incidents:</p>
           </div>
           {incidents.toReversed().map((incident) => (
-            <div
-              className="card w-90vw bg-base-100 shadow-lg m-2.5"
-              key={incident.id}
-            >
-              <div className="card-body">
-                <h2 className="card-title">{incident.brand}</h2>
-
-                <div className="flex">
-                  <div class="border-2 border-yellow-400 text-yellow-400 rounded-md w-20 text-center">
-                    Incident
-                  </div>
-                </div>
-
-                <p>{incident.productDescription.slice(0, 45)}...</p>
-                <div className="card-actions justify-end">
-                  <Link to={`/incidents/${incident.id}`} class="link">
-                    Incident Details
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <IncidentCard incident={incident} />
           ))}
         </>
       )}
