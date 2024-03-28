@@ -24,10 +24,10 @@ export default function Profile() {
       ) : (
         <>
           <div className="user-profile-upper">
-            <nav class="flex justify-between">
-              <h2>Profile</h2>
+            <nav class="flex justify-between items-center">
+              <h2 class="mt-1 align-middle">Profile</h2>
               <button
-                className="btn btn-secondary bg-red-700 hover:bg-red-500 border-red-700 mx-2.5 mt-1"
+                className="btn btn-secondary bg-red-700 hover:bg-red-500 border-red-700 mx-2.5 mt-1 py-1 px-3 text-sm"
                 onClick={handleLogout}
               >
                 Log Out
@@ -36,7 +36,7 @@ export default function Profile() {
             {userLoading ? (
               <p>Loading user info...</p>
             ) : (
-              <span className="user-details">
+              <span className="card m-2.5 p-2">
                 <p>
                   <strong>Username:</strong> {user.username}
                 </p>
@@ -48,7 +48,7 @@ export default function Profile() {
                 </Link>
               </span>
             )}
-            <h3>Your Incidents:</h3>
+            <p class="text-xl font-semibold">Your Incidents:</p>
           </div>
           {incidents.toReversed().map((incident) => (
             <div
