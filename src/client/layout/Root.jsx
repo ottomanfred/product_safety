@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
 import BottomNavbar from "./BottomNavbar";
 import "../index.css";
 import { useState } from "react";
@@ -9,11 +8,14 @@ export default function Root() {
 
   return (
     <>
-      {/* <Navbar /> */}
       <main>
-        <Outlet context={[result, setResult]}/>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        ></meta>
+        <Outlet context={[result, setResult]} />
       </main>
-      <BottomNavbar setResult={setResult}/>
+      <BottomNavbar setResult={setResult} />
     </>
   );
 }
