@@ -50,7 +50,7 @@ export default function Profile() {
             )}
             <h3>Your Incidents:</h3>
           </div>
-          {incidents.map((incident) => (
+          {incidents.toReversed().map((incident) => (
             <div
               className="card w-90vw bg-base-100 shadow-lg m-2.5"
               key={incident.id}
