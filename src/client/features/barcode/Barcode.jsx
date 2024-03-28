@@ -2,7 +2,7 @@ import { useZxing } from "react-zxing";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 function Barcode() {
-  const [result, setResult] = useOutletContext();
+  const [setResult] = useOutletContext();
   const navigate = useNavigate();
 
   const { ref } = useZxing({
@@ -15,10 +15,6 @@ function Barcode() {
   return (
     <div>
       <video ref={ref} />
-      <p>
-        <span>Last result:</span>
-        <span>{result}</span>
-      </p>
     </div>
   );
 }
