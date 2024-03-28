@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAddIncidentMutation } from "../reports/incidentSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function IncidentForm() {
   const [brand, setBrand] = useState("");
@@ -8,9 +9,12 @@ export default function IncidentForm() {
   const [upc, setUpc] = useState("");
   const [addIncident] = useAddIncidentMutation();
 
+  const navigate = useNavigate();
+
   const create = async (evt) => {
     evt.preventDefault();
     addIncident({ brand, productDescription, incidentDescription, upc });
+    navigate("/profile");
   };
 
   return (
