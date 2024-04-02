@@ -52,5 +52,5 @@ model Recall {
   title        String
   date         String
   summary      String
-  recallNumber Int
+  recallNumber String?
 }
