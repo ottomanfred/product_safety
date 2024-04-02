@@ -1,10 +1,24 @@
 const prisma = require("../prisma");
-const shortRecalls = require("../data/Recalls200.json");
-const shortIncidents = require("../data/Incedents300.json");
+const fs = require("fs");
+const { parse } = require("csv-parse");
 
-/** Seeds the database with a user and some tasks */
+/** Seeds the database using a file stream */
 const seed = async () => {
-  shortRecalls.map(async (recall) => {
+  const recallParser = fs.createReadStream("../data/Recalls.csv").pipe(
+    parse({
+      columns: true,
+    })
+  );
+
+  const incidentParser = fs
+    .createReadStream("../data/IncidentReports.csv")
+    .pipe(
+      parse({
+        columns: true,
+      })
+    );
+
+  for await (const recall of recallParser) {
     await prisma.recall.upsert({
       where: { id: -1 },
       update: {},
@@ -12,12 +26,12 @@ const seed = async () => {
         title: recall.Title,
         date: recall.Date,
         summary: recall.Summary,
-        recallNumber: recall["Repair Number"],
+        recallNumber: recall.RecallNumber,
       },
     });
-  });
+  }
 
-  shortIncidents.map(async (incident) => {
+  for await (const incident of incidentParser) {
     await prisma.incident.upsert({
       where: { id: -1 },
       update: {},
@@ -47,7 +61,7 @@ const seed = async () => {
         companyComment: incident["Company Comments"],
       },
     });
-  });
+  }
 };
 
 seed()
