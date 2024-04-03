@@ -4,10 +4,14 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-/** Sends all recalls and incidents */
-router.get("/recalls", async (req, res, next) => {
+/** 10 recalls paginated */
+router.get("/recalls/:page", async (req, res, next) => {
   try {
-    const recalls = await prisma.recall.findMany();
+    const page = +req.params.page;
+    const recalls = await prisma.recall.findMany({
+      skip: 10 * page - 10,
+      take: 10,
+    });
     res.json(recalls);
   } catch (err) {
     next(err);
@@ -24,9 +28,13 @@ router.get("/recalls/:id", async (req, res, next) => {
   }
 });
 
-router.get("/incidents", async (req, res, next) => {
+router.get("/incidents/:page", async (req, res, next) => {
   try {
-    const incidents = await prisma.incident.findMany();
+    const page = +req.params.page;
+    const incidents = await prisma.incident.findMany({
+      skip: 10 * page - 10,
+      take: 10,
+    });
     res.json(incidents);
   } catch (err) {
     next(err);
