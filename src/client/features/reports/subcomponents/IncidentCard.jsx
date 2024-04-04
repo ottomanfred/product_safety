@@ -30,7 +30,7 @@ export default function IncidentCard({ incident }) {
 
         <p>{incident.productDescription.slice(0, 45)}...</p>
         <div className="card-actions justify-end">
-          <Link to={`/incidents/${incident.id}`} class="link">
+          <Link to={`/incident/${incident.id}`} class="link">
             Incident Details
           </Link>
         </div>

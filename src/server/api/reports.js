@@ -18,7 +18,7 @@ router.get("/recalls/:page", async (req, res, next) => {
   }
 });
 
-router.get("/recalls/:id", async (req, res, next) => {
+router.get("/recall/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
     const recall = await prisma.recall.findUnique({ where: { id } });
@@ -41,7 +41,7 @@ router.get("/incidents/:page", async (req, res, next) => {
   }
 });
 
-router.get("/incidents/:id", async (req, res, next) => {
+router.get("/incident/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
     const incident = await prisma.incident.findUnique({ where: { id } });

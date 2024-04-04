@@ -7,7 +7,7 @@ const incidentsApi = api.injectEndpoints({
       providesTags: ["Incidents"],
     }),
     getIncident: builder.query({
-      query: (id) => `/incidents/${id}`,
+      query: (id) => `/incident/${id}`,
       providesTags: ["Incidents"],
     }),
     addIncident: builder.mutation({

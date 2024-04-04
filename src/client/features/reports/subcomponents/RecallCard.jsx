@@ -29,7 +29,7 @@ export default function RecallCard({ recall }) {
 
         <p>{recall.summary.split(" ", 8).join(" ")}...</p>
         <div className="card-actions justify-end">
-          <Link to={`/recalls/${recall.id}`} class="link">
+          <Link to={`/recall/${recall.id}`} class="link">
             Recall Details
           </Link>
         </div>
