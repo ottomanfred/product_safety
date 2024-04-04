@@ -10,11 +10,11 @@
     "dev": "nodemon src/server/index.js",
     "build": "vite build",
     "start": "node src/server",
-    "deploy": "prisma migrate deploy && prisma db seed"
+    "deploy": "prisma migrate deploy"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
-    "seed": "node seed.js"
+    "seed": "node src/server/prisma/seed.js"
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",

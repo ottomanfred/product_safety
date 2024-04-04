@@ -26,8 +26,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <AuthForm /> },
       { path: "/profile", element: <Profile /> },
       { path: "/incidents/submit", element: <IncidentForm /> },
-      { path: "/incidents/:id", element: <Incident /> },
-      { path: "/recalls/:id", element: <Recall /> },
+      { path: "/incident/:id", element: <Incident /> },
+      { path: "/recall/:id", element: <Recall /> },
     ],
   },
 ]);

@@ -7,7 +7,7 @@ const recallsApi = api.injectEndpoints({
       providesTags: ["Recalls"],
     }),
     getRecall: builder.query({
-      query: (id) => `/recalls/${id}`,
+      query: (id) => `/recall/${id}`,
       providesTags: ["Recalls"],
     }),
   }),
