@@ -4,14 +4,14 @@ const { parse } = require("csv-parse");
 
 /** Seeds the database using a file stream */
 const seed = async () => {
-  const recallParser = fs.createReadStream("../data/Recalls.csv").pipe(
+  const recallParser = fs.createReadStream("src/server/data/Recalls.csv").pipe(
     parse({
       columns: true,
     })
   );
 
   const incidentParser = fs
-    .createReadStream("../data/IncidentReports.csv")
+    .createReadStream("src/server/data/IncidentReports.csv")
     .pipe(
       parse({
         columns: true,
