@@ -4,7 +4,7 @@ const express = require("express");
 const morgan = require("morgan");
 const { createServer: createViteServer } = require("vite");
 
-const fs = require("fs");
+//const fs = require("fs");
 // const options = {
 //   key: fs.readFileSync("./cert/localhost.key"),
 //   cert: fs.readFileSync("./cert/localhost.crt"),
@@ -17,7 +17,7 @@ const PORT = process.env.PORT ?? 3000;
  * since we need to wait for the Vite server to be created
  */
 const createApp = async () => {
-  const app = express();
+  let app = express();
 
   // Logging middleware
   app.use(morgan("dev"));
@@ -51,7 +51,9 @@ const createApp = async () => {
     console.error(err);
     res.status(err.status ?? 500).send(err.message ?? "Internal server error.");
   });
-
+  if (process.env.NODE_ENV === "production") {
+    
+  }
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}.`);
   });
