@@ -36,7 +36,7 @@ export default function AuthForm() {
     // so we can use a try/catch to handle it.
     try {
       await authMethod(credentials).unwrap();
-      navigate("/");
+      navigate("/profile");
     } catch (err) {
       console.error(err);
     }

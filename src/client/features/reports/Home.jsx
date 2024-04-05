@@ -12,15 +12,15 @@ import ReportsNav from "./subcomponents/ReportsNav";
 export default function Home() {
   //variable to control pagination params
   const [page, setPage] = useState(1);
+  const [reportsSearch, setReportsSearch] = useState("ikea");
+  const [result] = useOutletContext();
+  const [showRecalls, setShowRecalls] = useState(true);
 
-  const { data: recalls, isLoading: recallsLoading } = useGetRecallsQuery(page);
-  const { data: incidents, isLoading: incidentsLoading } =
-    useGetIncidentsQuery(page);
+  const { data: recalls, isLoading: recallsLoading } = useGetRecallsQuery({page, reportsSearch});
+  const { data: incidents, isLoading: incidentsLoading } = useGetIncidentsQuery({page, reportsSearch});
 
   //Controls the search input field, and makes 'result' from the barcode scanner available to Home to filter recalls and incidents
-  const [reportsSearch, setReportsSearch] = useState("");
-  const [result] = useOutletContext();
-  const [showRecalls, setShowRecalls] = useState(true)
+
 
   // makes search input field case insensitive for filtering
   const searchMatch = new RegExp(reportsSearch, "i");
@@ -29,6 +29,7 @@ export default function Home() {
   useEffect(() => {
     setReportsSearch(result);
   }, [result]);
+
 
   return (
     <div className="home_container">
@@ -48,26 +49,18 @@ export default function Home() {
                 <h3 class="text-3xl font-bold dark:text-white m-2.5">
                   Recalls:
                 </h3>
-                {recalls
-                  .filter((recall) => recall.title.match(searchMatch))
-                  .map((recall) => (
-                    <RecallCard recall={recall} />
-                  ))}
+                {recalls.map((recall) => (
+                  <RecallCard recall={recall} />
+                ))}
               </>
             ) : (
               <>
                 <h3 class="text-3xl font-bold dark:text-white m-2.5">
                   Incidents:
                 </h3>
-                {incidents
-                  .filter(
-                    (incident) =>
-                      incident.brand.match(searchMatch) ||
-                      incident.upc?.match(searchMatch)
-                  )
-                  .map((incident) => (
-                    <IncidentCard incident={incident} />
-                  ))}
+                {incidents.map((incident) => (
+                  <IncidentCard incident={incident} />
+                ))}
               </>
             )}
           </>

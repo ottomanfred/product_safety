@@ -8,7 +8,14 @@ module.exports = router;
 router.get("/recalls/:page", async (req, res, next) => {
   try {
     const page = +req.params.page;
+    const search = req.query.search; // Access search parameter using req.query
     const recalls = await prisma.recall.findMany({
+      where: {
+        title: {
+          contains: search,
+          mode: "insensitive", // Corrected syntax for filtering by title containing search string
+        },
+      },
       skip: 10 * page - 10,
       take: 10,
     });
@@ -31,7 +38,22 @@ router.get("/recall/:id", async (req, res, next) => {
 router.get("/incidents/:page", async (req, res, next) => {
   try {
     const page = +req.params.page;
+    const search = req.query.search ?? ""; // Access search parameter using req.query
+
     const incidents = await prisma.incident.findMany({
+      where: {
+        OR: [
+          {
+            brand: {
+              contains: search,
+              mode: "insensitive", // Corrected syntax for filtering by title containing search string
+            },
+          },
+          {
+            upc: search,
+          },
+        ],
+      },
       skip: 10 * page - 10,
       take: 10,
     });

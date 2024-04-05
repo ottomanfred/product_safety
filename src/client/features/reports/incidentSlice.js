@@ -3,7 +3,12 @@ import api from "../../store/api";
 const incidentsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getIncidents: builder.query({
-      query: (page) => `/incidents/${page}`,
+      query: ({page, reportsSearch}) => ({
+        url: `/incidents/${page}`,
+        params: {
+          search: reportsSearch,
+        },
+      }),
       providesTags: ["Incidents"],
     }),
     getIncident: builder.query({
