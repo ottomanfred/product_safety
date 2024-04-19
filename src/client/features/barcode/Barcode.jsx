@@ -23,7 +23,7 @@ const Barcode = () => {
           },
         },
         decoder: {
-          readers: ["upc_reader"], // specify the type of barcode you want to detect
+          readers: ["upc_reader", "ean_reader"], // specify the type of barcode you want to detect
         },
       },
       function (err) {
@@ -33,10 +33,12 @@ const Barcode = () => {
         }
         console.log("Initialization finished. Ready to start");
         Quagga.start();
-        
+
         Quagga.onProcessed(function (result) {
-          var drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
+          const drawingCtx = Quagga.canvas.ctx.overlay
+          const drawingCanvas = Quagga.canvas.dom.overlay;
+          console.log(drawingCanvas);
+          console.log(drawingCtx);
 
           if (result) {
             if (result.boxes) {
@@ -77,7 +79,7 @@ const Barcode = () => {
             }
           }
         });
-        Quagga.onDetected(function(result) {
+        Quagga.onDetected(function (result) {
           setResult(result.codeResult.code);
         });
       }
@@ -90,7 +92,7 @@ const Barcode = () => {
 
   return (
     <>
-      <div ref={videoRef}>{/* <video  className="viewport"></video> */}</div>
+      <div className="barcodeVideo" ref={videoRef}>{/* <video  className="viewport"></video> */}</div>
       <p>Result:{result}</p>
     </>
   );
