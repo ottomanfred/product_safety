@@ -53,6 +53,11 @@
   .user-details {
     @apply border border-gray-200 rounded-lg p-4 my-2 shadow-md mx-2.5;
   }
+
+  canvas {
+    @apply fixed top-0 left-0
+  }
 }
 
 @tailwind utilities;
+
